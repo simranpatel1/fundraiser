@@ -14,13 +14,13 @@ if ($dbcon == NULL) {
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <title> Welly Donate</title>
+        <title> Donate</title>
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
     </head>
     <body>
         <div id="welly_donate">
             <header>
-                <h1>Welly Donate</h1>
+                <h1>Donate</h1>
                 <nav>
                     <ul>
                         <!--all the links in the nav bar are located below-->
@@ -30,8 +30,36 @@ if ($dbcon == NULL) {
                         <li><a href="pledge.php">PLEDGE</a></li>
                     </ul>
                 </nav>
-            </header>
-        </div>
+				<div class = "search-bar">
+					<form action="" method = "post">
+						<input type="text" name='search'>
+						<?php
+						if(isset($_POST['search'])){
+							$search = $_POST['search'];
+
+							$query1 = "SELECT * FROM fundraiser_event WHERE fundraiser_event.charity LIKE '%$search%'";
+							$query = mysqli_query($dbcon, $query1);
+							$count = mysqli_num_rows($query);
+
+							if($count == 0){
+								echo "There was no search results!";
+
+							}else{
+
+								while($row = mysqli_fetch_array($query)) {
+									echo "<br>";
+									echo $row['charity'];
+									echo "<br>";
+								}
+							}
+						}
+						
+
+						?>
+						<input type="submit" name="Search" value = "Search" >
+
+				</div>
+			</header>
 		<div class = "grid-container">
 			<div class ="biggest_donation">
 				<h1> Biggest Donation</h1>
@@ -43,7 +71,7 @@ if ($dbcon == NULL) {
 			</div>
 		</div>
         <footer>
-				<p>Welly donate - Made by Simran Patel <p>
+				<p>Donate - Made by Simran Patel <p>
         </footer>
     </body>
 </html>

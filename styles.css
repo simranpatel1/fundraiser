@@ -1,0 +1,166 @@
+header,
+nav,
+article,
+
+footer {
+    display: block;
+}
+
+body {
+    background-color: #fff;
+    font-size: 16px;
+    background-size: 100%;
+}
+
+div#welly_donate {
+    margin: auto;
+    width: 100%;
+    float: left
+}
+
+.grid-container {
+	width: 960px;
+	margin:  auto; /* center the wrapper */
+}
+
+.grid-container biggest_donation {
+    margin: auto;
+    float: center;
+}
+
+.grid-container top_fundraiser_event {
+    margin: auto;
+    float: center;
+}
+
+header {
+    padding: 5px 5px;
+    background-color: #F19C99;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {
+    color: #000;
+    font-size: 35pt;
+    font-family: monospace;
+	text-align: left;
+}
+
+header h2 {
+    color: #333;
+    font-size: 28pt;
+    text-shadow: 4px 4px #dbcc8f;
+    font-family: monospace;
+	text-align: center
+}
+
+nav{
+    float: right;
+    
+}
+nav ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    float: inherit;
+}
+
+nav ul li{
+    width: 90px;
+    height: 40px;
+    float: right;
+    line-height: 40px;
+    text-align: right;
+}
+
+nav ul li a{
+    color: #000;
+    text-decoration: none
+}
+
+nav ul li a:hover{
+    text-decoration: underline;/**this is so that when i hover over the links to the other pages it underlines**/
+}
+
+nav ul li ul li{
+    display: none;
+    border: 0.5px solid #dbcc8f;
+    border-radius: 3px 3px 3px 3px;
+}
+
+nav ul li:hover ul li{
+    display: block;
+    position: relative
+}
+
+aside {
+	width: 180px;
+    height: 680px;
+	padding: 10px;
+	font-family: Arial, Verdana, sans-serif;
+	background-color: #f6e0b3;
+	float: left;
+    margin: 10px 15px 15px 0px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 10px 10px #dbcc8f;
+}
+
+article {
+    padding: 20px;
+    background-color: #fff5eb;
+	float: left;
+    overflow: hidden;
+	width: 743px;
+    margin-top: 15px;
+    height: 667px
+}
+
+h1 {
+    font-family: monospace;
+    color: #000;
+    text-shadow: 2px 2px #fff;
+}
+
+h2 {
+    font-family: Arial, Verdana, sans-serif;
+    color: #000;
+	text-align: left;
+}
+
+h3{
+    font-family: Arial, Verdana, sans-serif;
+    color: #000;
+}
+p{
+	font-family: sans-serif;
+	size: 16px; 
+	color: #000;
+}
+
+img {
+	float: right;
+	padding: 8px;
+}
+
+/** Footer, box with the copyright information **/
+footer {
+    background-color: #F19C99; 
+	padding: 0px 20px;
+	width: 850;
+	clear: both;
+	text-align: center;
+	font-family: monospace;
+	overflow: auto;	/**This will make the footer hold all the elements in it**/		
+}
+
+footer p{
+	color: #000;
+}
+#smalltext {
+	font-size: 12px;
+	text-align: center;
+	color: #000;
+}

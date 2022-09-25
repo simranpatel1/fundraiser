@@ -24,7 +24,7 @@ if ($dbcon == NULL) {
                 <nav>
                     <ul>
                         <!--all the links in the nav bar are located below-->
-                        <li><a href="log_in.php"></a>Log In</a>/li>
+                        <li><a href="log_in.php"></a>Log In</a></li>
                         <li><a href="sign_up.php">Sign Up</a></li>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="pledge.php">PLEDGE</a></li>
@@ -57,7 +57,7 @@ if ($dbcon == NULL) {
 
 						?>
 						<input type="submit" name="Search" value = "Search" >
-
+					</form>
 				</div>
             </header>
         </div>

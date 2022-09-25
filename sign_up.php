@@ -57,10 +57,21 @@ if ($dbcon == NULL) {
 
 						?>
 						<input type="submit" name="Search" value = "Search" >
-
+					</form>
 				</div>
             </header>
+			<div class = "grid-container">
+				<h1>Sign up to become a fundraiser</h1>
+				<form action="insert.php" method="post">
 				
+				Full name : <input type ="text" name="full_name"><br>
+				Birth Date (yyyy-mm-dd): <input type = "text" name = "birth_date"><br>
+				Email Address: <input type = "text" name = "email"><br>
+
+				<input type ="submit" value ="Sign Up">
+			
+				</form>	
+			</div>
 		</div>
 	</body>
 </html>

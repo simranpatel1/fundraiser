@@ -8,6 +8,11 @@ if ($dbcon == NULL) {
 	echo "Database is not connected.";
 	exit();
 }
+
+$biggest_donation = "SELECT pledge_amount FROM donor_details WHERE pledge_amount = MAX(pledge_amount)";
+
+$biggest_donation_results = mysqli_query($dbcon, $biggest_donation);
+echo $biggest_donation_results;
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +24,7 @@ if ($dbcon == NULL) {
     </head>
     <body>
         <div id="welly_donate">
-            <header>
+			<header>
                 <h1>Donate</h1>
                 <nav>
                     <ul>
@@ -31,7 +36,7 @@ if ($dbcon == NULL) {
                     </ul>
                 </nav>
 				<div class = "search-bar">
-					<form action="" method = "post">
+					<form action="fundraiser.php" method = "post">
 						<input type="text" name='search'>
 						<?php
 						if(isset($_POST['search'])){
@@ -57,13 +62,15 @@ if ($dbcon == NULL) {
 
 						?>
 						<input type="submit" name="Search" value = "Search" >
-
+					</form>
 				</div>
 			</header>
 		<div class = "grid-container">
 			<div class ="biggest_donation">
 				<h1> Biggest Donation</h1>
-				<p>this will have the biggest donation and who made it</p>
+				<?php
+					echo $biggest_donation_results;
+				?>
 			</div>
 			<div class ="top_fundraiser_event">
 				<h1> Top fundraiser</h1>

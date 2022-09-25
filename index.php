@@ -12,7 +12,10 @@ if ($dbcon == NULL) {
 $biggest_donation = "SELECT pledge_amount FROM donor_details WHERE pledge_amount = MAX(pledge_amount)";
 
 $biggest_donation_results = mysqli_query($dbcon, $biggest_donation);
-echo $biggest_donation_results;
+
+$this_biggest_donation_results = mysqli_fetch_assoc($biggest_donation_results);
+echo $this_biggest_donation_results;
+
 ?>
 
 <!DOCTYPE html>

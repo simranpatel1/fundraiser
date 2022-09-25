@@ -7,7 +7,7 @@ $dbcon = mysqli_connect("localhost", "simranpatel", "aWkf8Rw", "simranpatel_fund
 if ($dbcon == NULL) {
 	echo "Database is not connected.";
 	exit();
-}
+}	
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,6 @@ if ($dbcon == NULL) {
 							$query1 = "SELECT * FROM fundraiser_event WHERE fundraiser_event.charity LIKE '%$search%'";
 							$query = mysqli_query($dbcon, $query1);
 							$count = mysqli_num_rows($query);
-
 							if($count == 0){
 								echo "There was no search results!";
 
@@ -57,17 +56,33 @@ if ($dbcon == NULL) {
 
 						?>
 						<input type="submit" name="Search" value = "Search" >
-
+					</form>
 				</div>
             </header>
         </div>
 		<div class = "grid-container">
 			<div class ="all_fundraiser">
-				<h1> All Fundraisers</h1>
+				<?php
+				if (isset($_GET['id'])) {
+				$id = $_GET['id'];
+				$query = mysqli_query("SELECT * FROM fundraiser_event", $dbcon);
+				while ($row1 = mysql_fetch_array($query1)) {
+				?>
+					<div class="form">
+						<h2>Charities</h2>
+						<!-- Displaying Data Read From Database -->
+						<span>Charity:</span> <?php echo $row1['charity']; ?>
+						<span>Goal:</span> <?php echo $row1['goal']; ?>
+						<span>Blurb:</span> <?php echo $row1['blurb']; ?>
+					</div>
+				<?php
+				}
+				}
+				?>
 			</div>
 		</div>
         <footer>
-				<p>Donate - Made by Simran Patel <p>
+				<p>Donate - Made by Simran Patel </p>
         </footer>
     </body>
 </html>

@@ -18,21 +18,41 @@ div#welly_donate {
     float: left
 }
 
-.grid-container {
-	width: 960px;
-	margin:  auto; /* center the wrapper */
+div#biggest_donation {
+    float: center;
+	border-radius: 20px;
+	border: 3px solid red;  
+  	outline: 3px solid blue;  
+  	font-size: 20px;  
+  	font-weight: bold;  
+ 	margin: 30px;  
+  	padding: 30px;  
+  	outline-offset: 0.5em;  
 }
+.all_fundraisers{
+	width:400px;
+	float:left;
+	background-color:#fff;
+	font-family:'Droid Serif',serif;
+	padding-left:30px
+}
+.form {
+	width:400px;
+	float:left;
+	background-color:#fff;
+	font-family:'Droid Serif',serif;
+	padding-left:30px
 
-.grid-container biggest_donation {
+}
+div#top_fundraiser_event {
     margin: auto;
     float: center;
 }
 
-.grid-container top_fundraiser_event {
+.grid-container all_fundraiser {
     margin: auto;
     float: center;
 }
-
 header {
     padding: 5px 5px;
     background-color: #F19C99;
@@ -49,9 +69,8 @@ header h1 {
 }
 
 header h2 {
-    color: #333;
+    color: #000;
     font-size: 28pt;
-    text-shadow: 4px 4px #dbcc8f;
     font-family: monospace;
 	text-align: center
 }
@@ -78,6 +97,8 @@ nav ul li{
 nav ul li a{
     color: #000;
     text-decoration: none
+	text-align: right;
+
 }
 
 nav ul li a:hover{

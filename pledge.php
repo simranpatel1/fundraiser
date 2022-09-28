@@ -62,22 +62,23 @@ if ($dbcon == NULL) {
         </div>
 		<div class = "grid-container">
 			<div class ="all_fundraiser">
+				<h1>All Fundraisers</h1>
 				<?php
-				if (isset($_GET['id'])) {
-				$id = $_GET['id'];
-				$query = mysqli_query("SELECT * FROM fundraiser_event", $dbcon);
-				while ($row1 = mysql_fetch_array($query1)) {
-				?>
-					<div class="form">
-						<h2>Charities</h2>
-						<!-- Displaying Data Read From Database -->
-						<span>Charity:</span> <?php echo $row1['charity']; ?>
-						<span>Goal:</span> <?php echo $row1['goal']; ?>
-						<span>Blurb:</span> <?php echo $row1['blurb']; ?>
-					</div>
-				<?php
-				}
-				}
+				$grab_all = "SELECT charity_id, charity, goal, blurb FROM fundraiser_event";
+				$grab_all_result = mysqli_query($dbcon, $grab_all);
+				if ($grab_all_result->num_rows > 0){
+					echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
+					while($row = $grab_all_result->fetch_assoc()) {
+						echo "<tr>"; 
+							echo "<td>" .$row["charity"]. "</td>" ; 
+							echo "<td>" .$row["goal"]. "</td>";
+							echo "<td>" .$row["blurb"]. "</td>";	
+                            echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
+					}
+					echo "</table>";
+				} else {
+					echo "0 results";
+				}	
 				?>
 			</div>
 		</div>

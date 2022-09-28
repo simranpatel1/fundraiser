@@ -24,7 +24,7 @@ if ($dbcon == NULL) {
                 <nav>
                     <ul>
                         <!--all the links in the nav bar are located below-->
-                        <li><a href="log_in.php"></a>Log In</a></li>
+                        <li><a href="log_in.php">Log In</a></li>
                         <li><a href="sign_up.php">Sign Up</a></li>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="pledge.php">PLEDGE</a></li>
@@ -64,11 +64,13 @@ if ($dbcon == NULL) {
 		<div class = "grid-container">
 			<div class ="biggest_donation">
 				<h1> Log into your account</h1>
-				<p>enter email adress</p>
-			</div>
-			<div class ="top_fundraiser_event">
-				<h1> Top fundraiser</h1>
-				<p>this will have the biggest fundraise and who made a pledge to it</p>
+				<form action="admin.php" method="post">
+				
+				Please enter your email address: <input type = "text" name = "email"><br>
+
+				<input type ="submit" value ="Log In">
+			
+				</form>	
 			</div>
 		</div>
         <footer>

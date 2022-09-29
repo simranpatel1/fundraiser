@@ -11,14 +11,15 @@
 		echo "Connected";
 	}
 
-	/* Insert into drinks table Query */
-	$drink = $_POST['drink'];
-	$cost = $_POST['cost'];
+	/* Insert into fundraiser_details table Query */
+	$full_name = $_POST['full_name'];
+	$birth_date = $_POST['birth_date'];
+	$email = $_POST['email'];
 
-	$insert_drink = "INSERT INTO drinks (drink, cost) VALUE ('$drink','$cost')";
+	$insert_sign_up = "INSERT INTO fundraiser_details (full_name, birth_date, email) VALUE ('$full_name','$birth_date','$email')";
 
     /* Check the data has been inserted */
-    if(!mysqli_query($dbcon, $insert_drink)) 
+    if(!mysqli_query($dbcon, $insert_sign_up)) 
 	{
         echo 'Inserted Failed!';
     } 
@@ -28,6 +29,6 @@
     }
 	
     /* Refresh the page after 2 seconds and return to the add_drinks.php page */
-    header("refresh:2; url=drinks.php");
+   /* header("refresh:2; url=admin.php");*/
 
     ?>

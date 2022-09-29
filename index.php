@@ -9,9 +9,7 @@ if ($dbcon == NULL) {
 	exit();
 }
 
-$biggest_donation = "SELECT pledge_amount FROM donor_details WHERE largest = MAX(pledge_amount)";
-$biggest_donation_results = mysqli_query($dbcon, $biggest_donation);
-echo $biggest_donation_results;
+$biggest_donation = mysqli_query($dbcon, "SELECT MAX(pledge_amount) AS largest FROM donor_details");
 
 ?>
 
@@ -69,8 +67,16 @@ echo $biggest_donation_results;
 			<div class ="biggest_donation">
 				<h1> Biggest Donation</h1>
 				<?php
-					echo $biggest_donation_results;
-				?>
+				$biggest_donation = mysqli_query($dbcon, "SELECT MAX(pledge_amount) AS largest FROM donor_details");
+				if(!$biggest_donation){
+					die(mysqli_error($dbcon));
+				}
+				if (mysqli_num_rows($biggest_donation) > 0) {
+					while($rowData = mysqli_fetch_array($biggest_donation)){
+						echo $rowData["largest"].'<br>';
+					}
+				}
+?>
 			</div>
 			<div class ="top_fundraiser_event">
 				<h1> Top fundraiser</h1>

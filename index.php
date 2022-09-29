@@ -10,9 +10,7 @@ if ($dbcon == NULL) {
 }
 
 $biggest_donation = "SELECT pledge_amount FROM donor_details WHERE largest = MAX(pledge_amount)";
-
 $biggest_donation_results = mysqli_query($dbcon, $biggest_donation);
-
 echo $biggest_donation_results;
 
 ?>
@@ -39,7 +37,7 @@ echo $biggest_donation_results;
                 </nav>
 				<div class = "search-bar">
 					<form action="fundraiser.php" method = "post">
-						<input type="text" name='search'>
+						<input type="text" name='search' action="fundraiser.php">
 						<?php
 						if(isset($_POST['search'])){
 							$search = $_POST['search'];
@@ -63,7 +61,7 @@ echo $biggest_donation_results;
 						
 
 						?>
-						<input type="submit" name="Search" value = "Search" >
+						<input type="submit" name="Search" value = "Search" action="fundraiser.php" >
 					</form>
 				</div>
 			</header>

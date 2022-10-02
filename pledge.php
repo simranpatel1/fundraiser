@@ -8,7 +8,13 @@ if ($dbcon == NULL) {
 	echo "Database is not connected.";
 	exit();
 }	
+
+$all_catagory_query = "SELECT catagory, charity_id FROM fundraiser_event";
+$all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
+	
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,24 +67,124 @@ if ($dbcon == NULL) {
             </header>
         </div>
 		<div class = "grid-container">
-			<div class ="all_fundraiser">
+			<div class ="all_fundraiser" id = "all_fundraiser">
 				<h1>All Fundraisers</h1>
+				<p>Sort by catagory of charities</p>
+				<form name="catagory_form" method="get"> 
+					<select name="catagory"> Sort by Catagory:<br/> 
+						<option value="All"> All</option> 
+						<option value="Medical"> Medical</option> 
+						<option value="Family"> Family</option> 
+						<option value="Multi Purpose"> Multi Purpose</option>
+						<option value="Children"> Children</option>  
+						<option value="Women"> Women</option> 
+						<input type="submit" value="Sort ">
+					</select> 
+				</form> 
 				<?php
-				$grab_all = "SELECT charity_id, charity, goal, blurb FROM fundraiser_event";
-				$grab_all_result = mysqli_query($dbcon, $grab_all);
-				if ($grab_all_result->num_rows > 0){
-					echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
-					while($row = $grab_all_result->fetch_assoc()) {
-						echo "<tr>"; 
-							echo "<td>" .$row["charity"]. "</td>" ; 
-							echo "<td>" .$row["goal"]. "</td>";
-							echo "<td>" .$row["blurb"]. "</td>";	
-                            echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
-					}
-					echo "</table>";
-				} else {
-					echo "0 results";
-				}	
+				$selected = $_GET["catagory"];
+				echo $selected;
+				if ($selected == "All"){
+					echo "all will print";
+					$catagory_all = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event ORDER BY charity ASC"); 
+					if ($catagory_all->num_rows > 0){
+						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
+						while($row = $catagory_all->fetch_assoc()) {
+							echo "<tr>"; 
+								echo "<td>" .$row["charity"]. "</td>" ; 
+								echo "<td>" .$row["goal"]. "</td>";
+								echo "<td>" .$row["blurb"]. "</td>";	
+								echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
+						}
+						echo "</table>";
+					} else {
+						echo "0 results";
+					}	
+				}
+				elseif ($selected == "Medical") {
+					$catagory_medical = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event WHERE catagory = 'Medical'"); 
+					if ($catagory_medical->num_rows > 0){
+						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
+						while($row = $catagory_medical->fetch_assoc()) {
+							echo "<tr>"; 
+								echo "<td>" .$row["charity"]. "</td>" ; 
+								echo "<td>" .$row["goal"]. "</td>";
+								echo "<td>" .$row["blurb"]. "</td>";	
+								echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
+						}
+						echo "</table>";
+					} else {
+						echo "0 results";
+					}	
+				}
+				elseif ($selected == "Family") {
+					$catagory_family = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event WHERE catagory = 'Family'"); 
+					if ($catagory_family->num_rows > 0){
+						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
+						while($row = $catagory_family->fetch_assoc()) {
+							echo "<tr>"; 
+								echo "<td>" .$row["charity"]. "</td>" ; 
+								echo "<td>" .$row["goal"]. "</td>";
+								echo "<td>" .$row["blurb"]. "</td>";	
+								echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
+						}
+						echo "</table>";
+					} else {
+						echo "0 results";
+					}	
+				}
+				elseif ($selected == "Multi Purpose") {
+					$catagory_multi = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event WHERE catagory = 'Multi'"); 
+					if ($catagory_multi->num_rows > 0){
+						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
+						while($row = $catagory_multi->fetch_assoc()) {
+							echo "<tr>"; 
+								echo "<td>" .$row["charity"]. "</td>" ; 
+								echo "<td>" .$row["goal"]. "</td>";
+								echo "<td>" .$row["blurb"]. "</td>";	
+								echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
+						}
+						echo "</table>";
+					} else {
+						echo "0 results";
+					}	
+				}
+				elseif ($selected == "Children") {
+					$catagory_children = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event WHERE catagory = 'Children'"); 
+					if ($catagory_children->num_rows > 0){
+						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
+						while($row = $catagory_children->fetch_assoc()) {
+							echo "<tr>"; 
+								echo "<td>" .$row["charity"]. "</td>" ; 
+								echo "<td>" .$row["goal"]. "</td>";
+								echo "<td>" .$row["blurb"]. "</td>";	
+								echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
+						}
+						echo "</table>";
+					} else {
+						echo "0 results";
+					}	
+				}
+				elseif ($selected == "Women"){
+					$catagory_women = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event WHERE catagory = 'Women'"); 
+					if ($catagory_women->num_rows > 0){
+						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
+						while($row = $catagory_women->fetch_assoc()) {
+							echo "<tr>"; 
+								echo "<td>" .$row["charity"]. "</td>" ; 
+								echo "<td>" .$row["goal"]. "</td>";
+								echo "<td>" .$row["blurb"]. "</td>";	
+								echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
+						}
+						echo "</table>";
+					} else {
+						echo "0 results";
+					}	
+				}
+				else{
+				echo"there were no results found";
+				}
+				
 				?>
 			</div>
 		</div>

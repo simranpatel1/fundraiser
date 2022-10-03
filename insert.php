@@ -15,8 +15,9 @@
 	$full_name = $_POST['full_name'];
 	$birth_date = $_POST['birth_date'];
 	$email = $_POST['email'];
+	$password = $_POST['pasword'];
 
-	$insert_sign_up = "INSERT INTO fundraiser_details (full_name, birth_date, email) VALUE ('$full_name','$birth_date','$email')";
+	$insert_sign_up = "INSERT INTO fundraiser_details (full_name, birth_date, email, password) VALUE ('$full_name','$birth_date','$email','$password')";
 
     /* Check the data has been inserted */
     if(!mysqli_query($dbcon, $insert_sign_up)) 

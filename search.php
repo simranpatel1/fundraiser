@@ -14,9 +14,9 @@ if ($dbcon == NULL) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8"/>
+        <meta charset="UTF-8">
         <title> Donate</title>
-        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="css/styles.css" >
     </head>
     <body>
         <div id="welly_donate">
@@ -33,7 +33,7 @@ if ($dbcon == NULL) {
                 </nav>
 				<div class = "search-bar">
 					<form action="search.php" method = "get">
-						<input type="text" name='search' action="fundraiser.php">
+						<input type="text" name='search'>
 						<?php
 						if(isset($_GET['search'])){
 							$search = $_GET['search'];
@@ -57,7 +57,7 @@ if ($dbcon == NULL) {
 						
 
 						?>
-						<input type="submit" name="Search" value = "Search" action="search.php" >
+						<input type="submit" name="Search" value = "Search">
 					</form>
 				</div>
 			</header>
@@ -75,8 +75,6 @@ if ($dbcon == NULL) {
 					die(mysqli_error($dbcon));
 					echo $search_results;
 					}
-					echo $search_results;
-
 					if ($search_results->num_rows > 0){
 						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
 						while($row = $search_results->fetch_assoc()) {

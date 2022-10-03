@@ -68,9 +68,14 @@ if ($dbcon == NULL) {
 				Birth Date : <input type = "text" name = "birth_date" placeholder="yyyy-mm-dd"><br>
 				Email Address: <input type = "text" name = "email"><br>
 
+				Password: <input type = "text" name = "password"><br>
+
 				<input type ="submit" value ="Sign Up">
 			
 				</form>	
+				<h2>Want to log in instead?</h2>
+				<input type ="submit" value ="Log In" action=log_in.php>
+
 			</div>
 		</div>
 	</body>

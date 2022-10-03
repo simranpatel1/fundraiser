@@ -19,9 +19,9 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8"/>
+        <meta charset="UTF-8">
         <title> Donate</title>
-        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="css/styles.css" >
     </head>
     <body>
         <div id="welly_donate">
@@ -38,7 +38,7 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
                 </nav>
 				<div class = "search-bar">
 					<form action="search.php" method = "post">
-						<input type="text" name='search' action="fundraiser.php">
+						<input type="text" name='search'>
 						<?php
 						if(isset($_POST['search'])){
 							$search = $_POST['search'];
@@ -62,7 +62,7 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
 						
 
 						?>
-						<input type="submit" name="Search" value = "Search" action="search.php" >
+						<input type="submit" name="Search" value = "Search">
 					</form>
 				</div>
 			</header>
@@ -73,14 +73,14 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
 				<p>Sort by catagory of charities</p>
 				<p>Start by selecting your catagory</p>
 				<form name="catagory_form" method="get"> 
-					<select name="catagory"> Sort by Catagory:<br/> 
+					<select name="catagory"> 
 						<option value="All"> All</option> 
 						<option value="Medical"> Medical</option> 
 						<option value="Family"> Family</option> 
 						<option value="Multi Purpose"> Multi Purpose</option>
 						<option value="Children"> Children</option>  
 						<option value="Women"> Women</option> 
-						<input type="submit" value="Sort ">
+						<input type="submit" value="Sort">
 					</select> 
 				</form> 
 				<?php

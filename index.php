@@ -16,9 +16,9 @@ $biggest_donation = mysqli_query($dbcon, "SELECT MAX(pledge_amount) AS largest F
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8"/>
+        <meta charset="UTF-8">
         <title> Donate</title>
-        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
     <body>
         <div id="welly_donate">
@@ -35,7 +35,7 @@ $biggest_donation = mysqli_query($dbcon, "SELECT MAX(pledge_amount) AS largest F
                 </nav>
 				<div class = "search-bar">
 					<form action="search.php" method = "post">
-						<input type="text" name='search' action="fundraiser.php">
+						<input type="text" name='search'>
 						<?php
 						if(isset($_POST['search'])){
 							$search = $_POST['search'];
@@ -59,7 +59,7 @@ $biggest_donation = mysqli_query($dbcon, "SELECT MAX(pledge_amount) AS largest F
 						
 
 						?>
-						<input type="submit" name="Search" value = "Search" action="search.php" >
+						<input type="submit" name="Search" value = "Search">
 					</form>
 				</div>
 			</header>
@@ -82,5 +82,6 @@ $biggest_donation = mysqli_query($dbcon, "SELECT MAX(pledge_amount) AS largest F
         <footer>
 				<p>Donate - Made by Simran Patel </p>
         </footer>
+		</div>
     </body>
 </html>

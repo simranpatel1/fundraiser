@@ -71,6 +71,8 @@ if ($dbcon == NULL) {
 				<input type ="submit" value ="Log In">
 			
 				</form>	
+				<h2>Want to sign up instead?</h2>
+				<input type ="submit" value ="Sign Up" action=sign_up.php>
 			</div>
 		</div>
         <footer>

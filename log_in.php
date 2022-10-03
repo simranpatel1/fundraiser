@@ -19,7 +19,7 @@ if ($dbcon == NULL) {
     </head>
     <body>
         <div id="welly_donate">
-            <header>
+			<header>
                 <h1>Donate</h1>
                 <nav>
                     <ul>
@@ -31,8 +31,8 @@ if ($dbcon == NULL) {
                     </ul>
                 </nav>
 				<div class = "search-bar">
-					<form action="" method = "post">
-						<input type="text" name='search'>
+					<form action="search.php" method = "post">
+						<input type="text" name='search' action="fundraiser.php">
 						<?php
 						if(isset($_POST['search'])){
 							$search = $_POST['search'];
@@ -56,10 +56,10 @@ if ($dbcon == NULL) {
 						
 
 						?>
-						<input type="submit" name="Search" value = "Search" >
+						<input type="submit" name="Search" value = "Search" action="search.php" >
 					</form>
 				</div>
-            </header>
+			</header>
         </div>
 		<div class = "grid-container">
 			<div class ="biggest_donation">
@@ -71,8 +71,10 @@ if ($dbcon == NULL) {
 				<input type ="submit" value ="Log In">
 			
 				</form>	
+				<form action=sign_up.php>
 				<h2>Want to sign up instead?</h2>
-				<input type ="submit" value ="Sign Up" action=sign_up.php>
+				<input type ="submit" value ="Sign Up">
+				</form>	
 			</div>
 		</div>
         <footer>

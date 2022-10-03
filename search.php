@@ -8,20 +8,7 @@ if ($dbcon == NULL) {
 	echo "Database is not connected.";
 	exit();
 }
-    /* Get from the drink id from index page else set default */
-    if(isset($_GET['drink_sel'])) {
-        $drinks_id = $_GET['drink_sel'];
-    } else {
-        $drinks_id = 1;
-    }
 
-	/* Create the SQL query */
-    $this_drink_query = "SELECT * FROM drinks WHERE drinks.drinks_id = '" .$drinks_id . "'";
-
-    /* Perform the query against the database */
-    $this_drink_result = mysqli_query($dbcon, $this_drink_query);
-
-    /* Fetch the result into an associative array */
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +20,7 @@ if ($dbcon == NULL) {
     </head>
     <body>
         <div id="welly_donate">
-            <header>
+			<header>
                 <h1>Donate</h1>
                 <nav>
                     <ul>
@@ -45,11 +32,11 @@ if ($dbcon == NULL) {
                     </ul>
                 </nav>
 				<div class = "search-bar">
-					<form method = "post" action="search.php">
-						<input type="text" name='search'>
+					<form action="search.php" method = "get">
+						<input type="text" name='search' action="fundraiser.php">
 						<?php
-						if(isset($_POST['search_id'])){
-							$search = $_POST['search_id'];
+						if(isset($_GET['search'])){
+							$search = $_GET['search'];
 
 							$query1 = "SELECT * FROM fundraiser_event WHERE fundraiser_event.charity LIKE '%$search%'";
 							$query = mysqli_query($dbcon, $query1);
@@ -57,6 +44,7 @@ if ($dbcon == NULL) {
 
 							if($count == 0){
 								echo "There was no search results!";
+
 							}else{
 
 								while($row = mysqli_fetch_array($query)) {
@@ -66,20 +54,49 @@ if ($dbcon == NULL) {
 								}
 							}
 						}
+						
+
 						?>
-						<input type="submit" name="Search" value = "Search">
+						<input type="submit" name="Search" value = "Search" action="search.php" >
 					</form>
 				</div>
 			</header>
 		</div>
 		
-			<div class = "grid-container">
-				<div class ="biggest_donation">
-					<h1> Results relating to '%charity%' </h1>
-				</div>
-			</div>
+		<div class = "grid-container">
+			<div class ="biggest_donation">
+				<h1><?php echo "Results relating to '$search'"; ?></h1>
 				
+				<?php
+				if(isset($_GET['search'])){
+					$search = $_GET['search'];
+					$search_results = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event WHERE charity_id LIKE '%" . $search  . "%'"); 
+					if(!$search_results){
+					die(mysqli_error($dbcon));
+					echo $search_results;
+					}
+					echo $search_results;
+
+					if ($search_results->num_rows > 0){
+						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
+						while($row = $search_results->fetch_assoc()) {
+							echo "<tr>"; 
+								echo "<td>" .$row["charity"]. "</td>" ; 
+								echo "<td>" .$row["goal"]. "</td>";
+								echo "<td>" .$row["blurb"]. "</td>";	
+								echo "<td><button type=\"submit\" name=\"pledge\" action=\"fundraiser.php\" value=\"Pledge\"</td></tr>";
+						}
+						echo "</table>";
+					} else {
+						echo "0 results";
+					}
+				}else{echo "no results";}
+				?>
+				
+			</div>
 		</div>
-	</body>
+	        <footer>
+				<p>Donate - Made by Simran Patel <p>
+        </footer>
+    </body>
 </html>
-		

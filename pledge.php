@@ -25,7 +25,7 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
     </head>
     <body>
         <div id="welly_donate">
-            <header>
+			<header>
                 <h1>Donate</h1>
                 <nav>
                     <ul>
@@ -37,8 +37,8 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
                     </ul>
                 </nav>
 				<div class = "search-bar">
-					<form action="" method = "post">
-						<input type="text" name='search'>
+					<form action="search.php" method = "post">
+						<input type="text" name='search' action="fundraiser.php">
 						<?php
 						if(isset($_POST['search'])){
 							$search = $_POST['search'];
@@ -46,6 +46,7 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
 							$query1 = "SELECT * FROM fundraiser_event WHERE fundraiser_event.charity LIKE '%$search%'";
 							$query = mysqli_query($dbcon, $query1);
 							$count = mysqli_num_rows($query);
+
 							if($count == 0){
 								echo "There was no search results!";
 
@@ -61,15 +62,16 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
 						
 
 						?>
-						<input type="submit" name="Search" value = "Search" >
+						<input type="submit" name="Search" value = "Search" action="search.php" >
 					</form>
 				</div>
-            </header>
+			</header>
         </div>
 		<div class = "grid-container">
 			<div class ="all_fundraiser" id = "all_fundraiser">
 				<h1>All Fundraisers</h1>
 				<p>Sort by catagory of charities</p>
+				<p>Start by selecting your catagory</p>
 				<form name="catagory_form" method="get"> 
 					<select name="catagory"> Sort by Catagory:<br/> 
 						<option value="All"> All</option> 
@@ -83,10 +85,9 @@ $all_catagory_result = mysqli_query($dbcon, $all_catagory_query);
 				</form> 
 				<?php
 				$selected = $_GET["catagory"];
-				echo $selected;
+				echo "Sorted by ", $selected;
 				if ($selected == "All"){
-					echo "all will print";
-					$catagory_all = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event ORDER BY charity ASC"); 
+					$catagory_all = mysqli_query($dbcon,"SELECT charity_id, charity, goal, blurb FROM fundraiser_event"); 
 					if ($catagory_all->num_rows > 0){
 						echo "<table><tr><th>Fundraisers</th><th>Goal</th><th>Blurb of Fundraiser</th></tr>";
 						while($row = $catagory_all->fetch_assoc()) {
